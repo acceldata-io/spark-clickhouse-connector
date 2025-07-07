@@ -100,16 +100,9 @@ allprojects {
     version = getProjectVersion()
 
     repositories {
-        maven {
-            url = "$mavenCentralMirror"
-        }
-
-        maven {
-            url = "$mavenSnapshotsRepo"
-            mavenContent {
-                snapshotsOnly()
-            }
-        }
+        maven { url = "$mavenStagingAccelRepo" }
+        maven { url = "$mavenAccelRepo" }
+        maven { url = "$mavenCentralMirror" }
     }
 }
 
@@ -158,7 +151,7 @@ subprojects {
             "--add-opens=java.base/sun.util.calendar=ALL-UNNAMED",
             "-Djdk.reflect.useDirectMethodHandle=false"
     ]
-    
+
     // TODO: Remove when https://github.com/ClickHouse/spark-clickhouse-connector/issues/503 is resolved
     extraJvmArgs += "-Dapi.version=${dockerApiVersion}"
 

@@ -111,6 +111,18 @@ subprojects {
                     }
                 }
             }
+
+            repositories {
+                maven {
+                    allowInsecureProtocol = true
+                    url = project.version.endsWith("-SNAPSHOT") ? "$snapMavenUrl" : "$mavenUrl"
+
+                    credentials {
+                        username = project.hasProperty("mavenUsername") ? "$mavenUsername" : ""
+                        password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
+                    }
+                }
+            }
         }
         if (project.hasProperty('release') && project.name.contains("-runtime")) {
             signing {
