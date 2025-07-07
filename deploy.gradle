@@ -75,10 +75,10 @@ subprojects {
             repositories {
                 maven {
                     allowInsecureProtocol = true
-                    url = project.version.endsWith("-SNAPSHOT") ? "$mavenSnapshotsRepo" : "$mavenReleasesRepo"
+                    url = project.version.endsWith("-SNAPSHOT") ? "$snapMavenUrl" : "$mavenUrl"
 
                     credentials {
-                        username = project.hasProperty("mavenUser") ? "$mavenUser" : ""
+                        username = project.hasProperty("mavenUsername") ? "$mavenUsername" : ""
                         password = project.hasProperty("mavenPassword") ? "$mavenPassword" : ""
                     }
                 }
