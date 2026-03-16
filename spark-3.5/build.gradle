@@ -19,6 +19,13 @@ project.ext {
 
 
 project(":clickhouse-spark-${spark_binary_version}_$scala_binary_version") {
+
+    configurations.all {
+        resolutionStrategy.capabilitiesResolution.withCapability("org.lz4:lz4-java") {
+            select("org.lz4:lz4-java:1.8.1")
+        }
+    }
+
     dependencies {
         api project(":clickhouse-core")
 
