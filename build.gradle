@@ -18,6 +18,8 @@ import org.codehaus.groovy.runtime.GStringImpl
 // Add buildscript block for conditional SonarQube
 buildscript {
     repositories {
+        maven { url = "$mavenStagingAccelRepo" }
+        maven { url = "$mavenAccelRepo" }
         maven { url = "https://plugins.gradle.org/m2/" }
         maven { url = "$mavenCentralMirror" }
     }
